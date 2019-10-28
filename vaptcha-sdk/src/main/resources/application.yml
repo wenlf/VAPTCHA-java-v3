@@ -1,0 +1,11 @@
+server:
+  port: 8080
+  servlet:
+    # session 有效期3分钟
+    session:
+      timeout: 180s
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
