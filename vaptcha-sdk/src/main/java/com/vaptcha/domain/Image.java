@@ -3,7 +3,7 @@ package com.vaptcha.domain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 
-public class ImgResp {
+public class Image {
     private String code;
     @SerializedName("imgid")
     private String imgId;
@@ -11,7 +11,7 @@ public class ImgResp {
     private String msg;
     private String key;
 
-    public ImgResp(String code, String imgId, String knock, String msg, String key) {
+    public Image(String code, String imgId, String knock, String msg, String key) {
         this.code = code;
         this.imgId = imgId;
         this.knock = knock;
@@ -19,7 +19,7 @@ public class ImgResp {
         this.key = key;
     }
 
-    public ImgResp() {
+    public Image() {
     }
 
     @Override

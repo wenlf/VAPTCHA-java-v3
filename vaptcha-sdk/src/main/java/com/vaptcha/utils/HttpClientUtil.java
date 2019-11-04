@@ -1,9 +1,5 @@
 package com.vaptcha.utils;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.List;
-
 import com.vaptcha.domain.HttpResp;
 import org.apache.commons.codec.Charsets;
 import org.apache.http.HttpEntity;
@@ -18,8 +14,16 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.List;
 
 public class HttpClientUtil {
+    private static final Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
+
     // 发送GET请求
     public static HttpResp getRequest(String path, List<NameValuePair> parametersBody) throws Exception, URISyntaxException {
         URIBuilder uriBuilder = new URIBuilder(path);
@@ -30,7 +34,7 @@ public class HttpClientUtil {
             HttpResponse response = client.execute(get);
             int code = response.getStatusLine().getStatusCode();
             if (code >= 400) {
-                throw new RuntimeException("Could not access protected resource. Server returned http code: " + code);
+                logger.warn("Could not access  resource path: " + path + " Server returned http code: " + code);
             }
             return new HttpResp(EntityUtils.toString(response.getEntity()), code);
         } catch (ClientProtocolException e) {

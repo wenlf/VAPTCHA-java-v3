@@ -26,7 +26,7 @@
                 border: none;
             }
             ​
-            .vaptcha-init-loading>a img {
+            .vaptcha-init-loading>a image {
                 vertical-align: middle
             }
             ​
@@ -47,7 +47,7 @@
         <div class="vaptcha-init-main">
             <div class="vaptcha-init-loading">
                 <a href="/" target="_blank">
-                    <img src="https://statics.vaptcha.com/img/vaptcha-loading.gif" />
+                    <image src="https://statics.vaptcha.com/image/vaptcha-loading.gif" />
                 </a>
                 <span class="vaptcha-text">Vaptcha启动中...</span>
             </div>
@@ -67,7 +67,7 @@
         //scene: 0, // 场景值 默认0
         }).then(function (vaptchaObj) {
             obj = vaptchaObj;//将VAPTCHA验证实例保存到局部变量中
-            vaptchaObj.render()// 调用验证实例 vpObj 的 render 方法加载验证按钮
+            vaptchaObj.render(); // 调用验证实例 vpObj 的 render 方法加载验证按钮
 
             //获取token的方式一：
             //vaptchaObj.renderTokenInput('.login-form')//以form的方式提交数据时，使用此函数向表单添加token值

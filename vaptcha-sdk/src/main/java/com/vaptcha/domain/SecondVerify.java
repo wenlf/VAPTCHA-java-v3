@@ -1,14 +1,14 @@
 package com.vaptcha.domain;
 
-public class SecondVerifyResp {
-    private int code;
+public class SecondVerify {
+    private int success;
     private String msg;
     private int score;
 
     @Override
     public String toString() {
         return "SecondVerifyResp{" +
-                "code=" + code +
+                "code=" + success +
                 ", msg='" + msg + '\'' +
                 ", score=" + score +
                 '}';
@@ -22,18 +22,18 @@ public class SecondVerifyResp {
         this.score = score;
     }
 
-    public SecondVerifyResp(int code, String msg, int score) {
-        this.code = code;
+    public SecondVerify(int success, String msg, int score) {
+        this.success = success;
         this.msg = msg;
         this.score = score;
     }
 
-    public int getCode() {
-        return code;
+    public int getSuccess() {
+        return success;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setSuccess(int success) {
+        this.success = success;
     }
 
     public String getMsg() {
@@ -44,11 +44,11 @@ public class SecondVerifyResp {
         this.msg = msg;
     }
 
-    public SecondVerifyResp() {
+    public SecondVerify() {
     }
 
-    public SecondVerifyResp(int code, String msg) {
-        this.code = code;
+    public SecondVerify(int success, String msg) {
+        this.success = success;
         this.msg = msg;
     }
 }

@@ -58,4 +58,7 @@ public class GetResp {
         this.offlineState = offlineState;
         this.offlineKey = offlineKey;
     }
+
+    public GetResp() {
+    }
 }

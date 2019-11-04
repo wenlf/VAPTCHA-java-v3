@@ -27,7 +27,7 @@
             border: none;
         }
 
-        .vaptcha-init-loading > a img {
+        .vaptcha-init-loading > a image {
             vertical-align: middle
         }
 
@@ -48,20 +48,22 @@
     <div class="vaptcha-init-main">
         <div class="vaptcha-init-loading">
             <a href="/" target="_blank">
-                <img src="https://statics.vaptcha.com/img/vaptcha-loading.gif"/>
+                <image src="https://statics.vaptcha.com/image/vaptcha-loading.gif"/>
             </a>
             <span class="vaptcha-text">Vaptcha启动中...</span>
         </div>
     </div>
 </div>
 <script src="https://v.vaptcha.com/v3.js"></script>
+<script src="https:r.vaptcha.com/public/js/jquery-3.2.1.min.js"></script>
+
 <script>
     vaptcha({
-        vid: '5b4d9c33a485e50410192331', // 验证单元id
+        vid: '******', // 验证单元id
         type: 'embed', // 显示类型 嵌入式
         container: '#vaptchaContainer', // 容器，可为Element 或者 selector
         offline_server: 'http://127.0.0.1:8080/offline', //离线模式服务端地址
-        // mode:'downtime',
+        // mode:'offline',
         //可选参数
         //lang: 'zh-CN', // 语言 默认zh-CN,可选值zh-CN,en,zh-TW
         //https: false, // 使用https 默认false
@@ -79,13 +81,24 @@
             var data = {
                 //表单数据
                 token: vaptchaObj.getToken()
-            }
-            $.post('login', data, function (r) {
-                if (r.code !== 200) {
-                    console.log('登录失败');
-                    vaptchaObj.reset(); //重置验证码
-                }
-            })
+            };
+            console.log("token: " + data.token);
+            $.ajax({
+                type: 'POST',
+                // url: "login",
+                url: "http://127.0.0.1:8080/verify",
+                xhrFields: {
+                    withCredentials: true
+                },
+                data: JSON.stringify(data),
+                success: function (r) {
+                    if (r.code !== 200) {
+                        console.log('登录失败');
+                        vaptchaObj.reset(); //重置验证码
+                    }
+                },
+                contentType: "application/json;charset=UTF-8"
+            });
         })
     })
 </script>

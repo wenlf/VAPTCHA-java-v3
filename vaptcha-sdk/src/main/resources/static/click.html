@@ -30,7 +30,7 @@
         }
 
         ​
-        .vaptcha-init-loading > a img {
+        .vaptcha-init-loading > a image {
             vertical-align: middle
         }
 
@@ -52,7 +52,7 @@
     <div class="vaptcha-init-main">
         <div class="vaptcha-init-loading">
             <a href="/" target="_blank">
-                <img src="https://statics.vaptcha.com/img/vaptcha-loading.gif"/>
+                <image src="https://statics.vaptcha.com/image/vaptcha-loading.gif"/>
             </a>
             <span class="vaptcha-text">Vaptcha启动中...</span>
         </div>
@@ -63,17 +63,17 @@
 <script src="https:r.vaptcha.com/public/js/jquery-3.2.1.min.js"></script>
 <script>
     vaptcha({
-        vid: '5b4d9e45a485e5041019257c', // 验证单元id
+        vid: '******', // 验证单元id
         type: 'click', // 显示类型 点击式
         container: '#vaptchaContainer', // 容器，可为Element 或者 selector
         offline_server: 'http://127.0.0.1:8080/offline', //离线模式服务端地址
-
-        //可选参数
-        //lang: 'zh-CN', // 语言 默认zh-CN,可选值zh-CN,en,zh-TW
-        //https: false, // 使用https 默认false
-        //scene: 0, // 场景值 默认0
-        //style: 'dark' //按钮样式 默认dark，可选值 dark,light
-        //color: '#57ABFF' //按钮颜色 默认值#57ABFF
+        mode: 'offline', // 加入此参数直接进入离线模式，用于调试，上线请删除
+    //可选参数
+    //lang: 'zh-CN', // 语言 默认zh-CN,可选值zh-CN,en,zh-TW
+    //https: false, // 使用https 默认false
+    // scene: 0,// 场景值 默认0
+    //style: 'dark' //按钮样式 默认dark，可选值 dark,light
+    //color: '#57ABFF' //按钮颜色 默认值#57ABFF
     }).then(function (vaptchaObj) {
         obj = vaptchaObj;//将VAPTCHA验证实例保存到局部变量中
         vaptchaObj.render();// 调用验证实例 vpObj 的 render 方法加载验证按钮
