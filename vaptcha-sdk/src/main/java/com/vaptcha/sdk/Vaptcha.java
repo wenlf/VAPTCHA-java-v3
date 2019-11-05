@@ -99,7 +99,7 @@ public class Vaptcha {
             }
             // 获取验证图
             Image image = GetImage(knock, offlineKey);
-            // 生成imgData并以challenge为key存入session
+            // 生成imgData并以knock为key存入session
             // key:knock value:unix+imgId
             String timestamp = String.valueOf(Common.GetTimeStamp());
             String imgData = timestamp + image.getImgId();
@@ -194,8 +194,8 @@ public class Vaptcha {
     /**
      * 离线模式二次校验
      *
-     * @param reqToken     前端请求的token uid(32)
-     * @param sessionToken 后端session中存的token offline(7)+knock(32)+uid(32)
+     * @param reqToken     前端请求的token offline(7)+knock(32)+uid(32)
+     * @param sessionToken 后端session中存的token uid(32)
      */
     private SecondVerify OfflineVerify(String reqToken, String sessionToken) {
         if (reqToken == null || "".equals(reqToken) || sessionToken == null || "".equals(sessionToken)) {
