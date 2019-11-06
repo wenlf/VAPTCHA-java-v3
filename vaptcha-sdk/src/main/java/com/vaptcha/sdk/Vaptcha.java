@@ -51,7 +51,7 @@ public class Vaptcha {
     /**
      * 二次验证
      *
-     * @param token mode(7)+knock(32)+uid(32)
+     * @param token mode(7)+knock(32)+uuid(32)
      */
     public SecondVerify Verify(HttpServletRequest request, String token) {
         if (token.length() < 7) {
@@ -159,10 +159,8 @@ public class Vaptcha {
         try {
             List<NameValuePair> parametersBody = new ArrayList<>();
             HttpResp httpResp = HttpClientUtil.getRequest(Constant.ChannelUrl + "config/" + vid, parametersBody);
-            String replace = httpResp.getResp().replace("static(", "");
-            String replace1 = replace.replace(")", "");
             Gson gson = new Gson();
-            return gson.fromJson(replace1, GetResp.class);
+            return gson.fromJson(httpResp.getResp(), GetResp.class);
         } catch (Exception e) {
             e.printStackTrace();
         }

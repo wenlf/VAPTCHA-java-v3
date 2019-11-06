@@ -1,8 +1,9 @@
 package com.vaptcha.inteface;
 
-import com.vaptcha.sdk.Vaptcha;
 import com.vaptcha.constant.Constant;
+import com.vaptcha.domain.HttpResp;
 import com.vaptcha.domain.SecondVerify;
+import com.vaptcha.sdk.Vaptcha;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,11 +29,11 @@ public class Verify {
         if (result.getSuccess() == Constant.VerifySuccess) {
             // 二次验证成功
             // 执行后续逻辑 比如:登录 注册
-            return "verify success";
+            return new HttpResp("verify success", 200);
         } else {
             // 二次验证失败
             // 前端重新人机验证
-            return "verify fail";
+            return new HttpResp("verify fail", 400);
         }
     }
 }
