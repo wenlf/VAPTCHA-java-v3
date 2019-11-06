@@ -1,9 +1,7 @@
 # VAPTCHA-java-v3
-vaptcha-v3 java demo
 
 
-
-## 使用方法
+## Quick Start
 
 1.创建验证单元，获取`VID`和`Key` 。[点击创建](https://management.vaptcha.com/manage)。
 
