@@ -109,7 +109,7 @@ public class Vaptcha {
             String[] resultArray = new String[]{callback, "(", res, ")"};
             return Common.StrAppend(resultArray);
         } else {
-            // imgData=unix(11)+imgId(32)
+            // imgData=unix(10)+imgId(32)
             // 根据knock从session中获取imgData 获取成功则移除掉 一个knock只能使用一次
             String imgData = (String) session.getAttribute(knock);
             session.removeAttribute(knock);
@@ -121,7 +121,7 @@ public class Vaptcha {
                 // session中只存uid 返回前端时拼接 offline+knock+uid
                 String uuid = Common.GetUUID();
                 session.setAttribute(knock, uuid);
-                String respToken = "offline" + knock + uuid;
+                String respToken = Constant.OfflineMode + knock + uuid;
                 verify.setToken(respToken);
             }
             String result = new Gson().toJson(verify);
@@ -139,14 +139,14 @@ public class Vaptcha {
      */
     private Image GetImage(String knock, String offlineKey) {
         if (offlineKey == null || "".equals(offlineKey)) {
-            return new Image("0104", "", "", "离线key获取失败", "");
+            return new Image(Constant.ValidateFail, "", "", "离线key获取失败", "");
         }
         String randomStr = Common.GetRandomStr();
         String imgId = Common.MD5Encode(offlineKey + randomStr);
         if (knock == null || "".equals(knock)) {
             knock = Common.GetUUID();
         }
-        return new Image("0103", imgId, knock, "", offlineKey);
+        return new Image(Constant.ValidateSuccess, imgId, knock, "", offlineKey);
     }
 
     /**
@@ -192,12 +192,12 @@ public class Vaptcha {
     /**
      * 离线模式二次校验
      *
-     * @param reqToken     前端请求的token offline(7)+knock(32)+uid(32)
-     * @param sessionToken 后端session中存的token uid(32)
+     * @param reqToken     前端请求的token offline(7)+knock(32)+uuid(32)
+     * @param sessionToken 后端session中存的token uuid(32)
      */
     private SecondVerify OfflineVerify(String reqToken, String sessionToken) {
         if (reqToken == null || "".equals(reqToken) || sessionToken == null || "".equals(sessionToken)) {
-            return new SecondVerify(0, "验证失败", 0);
+            return new SecondVerify(Constant.VerifyFail, "验证失败", 0);
         }
 
         String uid = reqToken.substring(39);

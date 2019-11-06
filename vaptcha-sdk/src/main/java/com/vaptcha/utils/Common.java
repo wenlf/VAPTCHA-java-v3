@@ -74,8 +74,8 @@ public class Common {
         } else if (ip.length() > 15) {
             String[] ips = ip.split(",");
             for (String s : ips) {
-                if (!("unknown".equalsIgnoreCase((String) s))) {
-                    ip = (String) s;
+                if (!("unknown".equalsIgnoreCase(s))) {
+                    ip = s;
                     break;
                 }
             }

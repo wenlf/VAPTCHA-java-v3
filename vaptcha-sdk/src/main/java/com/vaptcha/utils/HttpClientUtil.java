@@ -18,14 +18,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 
 public class HttpClientUtil {
     private static final Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
 
     // 发送GET请求
-    public static HttpResp getRequest(String path, List<NameValuePair> parametersBody) throws Exception, URISyntaxException {
+    public static HttpResp getRequest(String path, List<NameValuePair> parametersBody) throws Exception {
         URIBuilder uriBuilder = new URIBuilder(path);
         uriBuilder.setParameters(parametersBody);
         HttpGet get = new HttpGet(uriBuilder.build());
