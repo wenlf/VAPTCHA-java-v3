@@ -15,9 +15,9 @@ public class Constant {
     public static final String OfflineMode = "offline";
     //-----------验证单元相关信息 请自行替换----------------
     // 验证单元key
-    public static final String SecretKey = "9bcdceb40e274dbb808df70b9d24d652";
+    public static final String SecretKey = "****";
     // 验证单元id
-    public static final String Vid = "5dba48a598bb11d350b45728";
+    public static final String Vid = "****";
     // 场景值
     public static final String Scene = "1";
 }
