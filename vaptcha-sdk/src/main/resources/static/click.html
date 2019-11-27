@@ -59,12 +59,12 @@
 <script src="https:r.vaptcha.com/public/js/jquery-3.2.1.min.js"></script>
 <script>
     vaptcha({
-        vid: '*****', // 必填
+        vid: '5dba48a598bb11d350b45728', // 必填
         type: 'click', // 必填 显示类型 点击式
         container: '#vaptchaContainer', // 嵌入式、点击式必填 容器，可为Element 或者 selector
-        offline_server: 'http://127.0.0.1:8080/offline', //离线模式服务端地址
-        mode: 'offline', // 加入此参数直接进入离线模式，用于调试，上线请删除
         scene: 1, //不填默认为0
+        offline_server: 'http://127.0.0.1:8080/offline', //离线模式服务端地址 必填
+        // mode: 'offline', // 加入此参数直接进入离线模式，用于调试，上线请删除
         //可选参数
         //lang: 'zh-CN', // 语言 默认zh-CN,可选值zh-CN,en,zh-TW
         //https: false, // 使用https 默认false
